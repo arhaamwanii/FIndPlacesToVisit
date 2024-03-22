@@ -11,6 +11,7 @@ USE EFFECT
 
     - we use useEffect to prevent loops
 
-    we are in a very weird
+    DEPENDENCIES 
+    these are prop or state values that are used inside of this function
 
-    - the
+    something inside of the use effect this open in

@@ -1,26 +1,29 @@
-import { forwardRef, useImperativeHandle, useRef } from 'react';
+import {   useRef , useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
-const Modal = forwardRef(function Modal({ children }, ref) {
+function Modal({open ,  children }, ) {
   const dialog = useRef();
 
-  useImperativeHandle(ref, () => {
-    return {
-      open: () => {
-        dialog.current.showModal();
-      },
-      close: () => {
-        dialog.current.close();
-      },
-    };
-  });
+useEffect (() =>{
+  if(open){
+  dialog.current.showModal()
+}else{
+  dialog.current.close();
+}
+} ,[])
 
   return createPortal(
-    <dialog className="modal" ref={dialog}>
+    <dialog className="modal" ref={dialog} open={open} >
       {children}
     </dialog>,
     document.getElementById('modal')
   );
-});
+};
 
 export default Modal;
+
+
+//calling close becasue there are one of the main thing in the end we are all in there for the good that is the thign even if we are not going to do the deed
+//right after the component fucntion - 
+
+//use state this is one of te
