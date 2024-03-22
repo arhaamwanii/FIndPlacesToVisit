@@ -5,11 +5,25 @@ import { AVAILABLE_PLACES } from './data.js';
 import Modal from './components/Modal.jsx';
 import DeleteConfirmation from './components/DeleteConfirmation.jsx';
 import logoImg from './assets/logo.png';
+import { sortPlacesByDistance } from './loc';
 
 function App() {
   const modal = useRef();
   const selectedPlace = useRef();
+  const [availablePlaces , setAvailablePlaces] = useState([])
   const [pickedPlaces, setPickedPlaces] = useState([]);
+
+
+  //this is not directly related -- it does not finish handle it
+  //this will take some time 
+  //i.e after the inital render has been finished this thing would still be going on 
+  // i.e we need to use a state then what will happen is the data will be fetched and state rerender would occour which would result in this function being called again and then again resulting in an inginite loop
+  navigator.geolocation.getCurrentPosition((position) => {
+    const sortedPlaces = sortPlacesByDistance(
+    AVAILABLE_PLACES , 
+    position.coords.latitude ,
+    position.coords.longitude)
+  });
 
   function handleStartRemovePlace(id) {
     modal.current.open();
@@ -72,3 +86,6 @@ function App() {
 }
 
 export default App;
+
+
+//
