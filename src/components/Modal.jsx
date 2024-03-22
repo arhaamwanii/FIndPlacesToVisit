@@ -14,7 +14,7 @@ useEffect (() =>{
 
   return createPortal(
     <dialog className="modal" ref={dialog} open={open} >
-      {children}
+      {open ? children : null}
     </dialog>,
     document.getElementById('modal')
   );
