@@ -5,3 +5,12 @@ USE EFFECT
     - that direcctly does not do shit at that time
 
     - location in most react apps
+
+    - you are not allowed to use hooks inside of nested function, if statements and like that -- must be used in the root
+    - not every side effect, needs a useEffect one of the 
+
+    - we use useEffect to prevent loops
+
+    we are in a very weird
+
+    - the
