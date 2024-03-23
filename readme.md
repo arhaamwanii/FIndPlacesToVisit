@@ -43,3 +43,15 @@ WHILE USIGN A FUNCTION AS A DEPENDENCY CAN RESULT IN AN IFINFITE LOOP BECAUSE OF
 
 when passing functions as dependencies to useEffect -- you  should wrap that function in a use callback, because that will prevent the rernder of the fucntion(just the rerender will be considered as a cange by the react ) as now this fucntion is a dependecy to the useEffect it would have caused it to cause another rerender which would have again changed the dependency and on and on and on.. resulting in an infinite loop
 - use callback can simply prevent this.
+- when passing function as a dependency in the useEFfect there are high chances of an infinite loop so to preven that we can use useCallback, see when the child component rerenders result at the same time function you have passed as an input might also rerender - so when that happens it dosen't necessarly have to have a change in the fucntion insted after a rerender react simply considers the function as a new function. so that re-render i.e chage in the fucntion which is passed as an dependency occurs the fucntion will be rerendered which will inturn case another rerender resulting in an infinite loop 
+
+SET INTERVAL
+we can pass an sentence as an input and get it executed every time after ___ millisecond
+- you have to clear (clear interval), otherwise it will be going on forever in bg
+
+SET TIMER
+a one big timer when that finises execute the function and that is it then do nothing 
+
+lot of component rerenders = so we we can out source it to a new component, resulting others things don't have to be rerendered levery time 
+
+-> lot fo rerenders -> that should be outsourced to a new component

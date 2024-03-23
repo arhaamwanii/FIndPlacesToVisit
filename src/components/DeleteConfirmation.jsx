@@ -1,7 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+const TIMER = 3000;
 
 export default function DeleteConfirmation({ onConfirm, onCancel }) {
+  const [remainingTime , setReaminingTime] = useState(3000)
+
+  useEffect(() => {
+    const interval = setInterval(()=>{
+      setReaminingTime(prevTime => prevTime - 10 );
+    } , 10)
+    return 
+    clearInterval(interval)
+  } , [])
   
+//well there are a lot of rernders -- lot of component rerenders 
+
   useEffect(() => {
       console.log('TIMER SET')
    const timer = setTimeout(()=> {
@@ -31,9 +44,10 @@ export default function DeleteConfirmation({ onConfirm, onCancel }) {
           Yes
         </button>
       </div>
+      <progress value={remainingTime} max={TIMER}/>
     </div>
   );
 }
 
 
-// auto confirm 
+// state for frequent rerender

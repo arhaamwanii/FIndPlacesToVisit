@@ -60,7 +60,7 @@ function App() {
       setModalIsOpen(false)
       return updatedPlaces;
     });
-  } , [])
+  } , [])//this dependency is any prop that are used inside of the wrapped function 
 
 
   return (
